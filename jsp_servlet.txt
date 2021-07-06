@@ -1,0 +1,63 @@
+<jsp_servlet>
+
+// 기본용어
+SERVER: 네트워크에서 서비스를 제공하는 컴퓨터
+CLIENT: 네트워크에서 서비스를 제공받는 컴퓨터
+HTTP(Hyper Text Transfer Protocol:
+	- www 서비스를 위한 TCP/IP 응용계층 프로토콜 중 하나
+	- 웹 서버와 클라이언트는 HTTP를 이용한 통신
+	- 무 상태 연결(stateless connection): 서버에 접속한 클라이언트의 주소를 기억하지 않는다.
+
+요청: request (CLIENT -> SERVER) // request message는 Header와 Body로 작성 되어 있다.
+응답: response (SERVER -> CLIENT) // response message는 Header와 Body로 작성 되어 있다.
+
+// 정적인 웹페이지(
+CLIENT에서 주소입력/요청(request)
+-> SERVER에서 주소에 맞는 웹페이지(html)를 찾아서 응답(response)
+-> CLIENT의 브라우저에 응답받은 페이지 출력
+)
+	<처리방식>
+	- 정적인 웹페이지는 파일 형태(HTML)로 저장되어 있다.
+	- 사용자의 입력에 따라 변하지 않는다.(추가 기능이 없다)
+
+URL(Uniform Resource Locator)
+	- 인터넷상의 자원의 위치
+	- 특정 웹 서버의 특정파일에 접근하기 위한 경로/주소
+ 접근프로토콜 :// IP주소or도메인이름 / 문서의경로 / 문서이름
+	http ://   www.naver.com   /     docs     / cafemain.html
+
+// 동적인 웹페이지(
+CLIENT의 브라우저에서 입력한 값을 SERVER로 요청(request)
+-> SERVER는 요청받은 값을 WAS(비지니스로직이나 데이터베이스와의 연동을 통해 동적으로 서비스를 처리)로 전송
+-> WAS는 비지니스로직이나 데이터베이스를 통해서 전송받은 값에 맞는 결과값을 반환받음, 처리 후 SERVER로 전송
+-> SERVER는 CLIENT로 웹페이지 응답(response)
+)
+	<처리방식>
+	- 동적인 웹페이지는 웹 어플리케이션에 의해 생성되는 HTML문서이다.
+	- 웹 브라우저가 웹 어플리케이션에 전달한 파라미터 값에 따라 웹 페이지의 출력값이 변한다.
+	- 웹 어플리케이션은 출력값에 맞는 HTML파일을 생성하여 웹 서버로 전달한다.
+
+쿼리스트링
+	- get방식으로 요청했을때 URL주고 뒤에 입력데이터를 함께 제공하는 방법으로 "이름=값" 형식으로 전달
+ 접근프로토콜 :// IP주소or도메인이름 / 문서의경로 / 쿼리스트링(이름=값)
+	http ://   www.naver.com   /     docs     / insertInfo?id=hojin&age=29
+
+// Tomcat(SERVER)
+	- 톰캣은 서버이다.
+	- 톰캣과 프로젝트를 연결하여 톰캣서버를 열었을 때에만 웹 서버에서 응답받을 수 있다.
+	- 코드를 수정 하면 서버를 재시작 해야 한다.
+
+// jsp
+	- HTML을 작성하기 편한 문서
+	- java작성시(
+		<% 자바코드 %> / <%=값%>
+	)
+
+// servlet
+	- java코드를 작성하기 편한 문서
+	- HTML작성시(
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		int dan = Integer.parseInt(request.getParameter("dan")); // 동적인 웹페이지
+		out.println("<h1>hello servlet!! 헬로 서블렛!! !@#$%^&*()_+</h1>");
+	)
