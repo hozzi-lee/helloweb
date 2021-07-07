@@ -32,11 +32,11 @@ public class GugudanServlet extends HttpServlet {
 
 		for (int i = 1; i < 10; i++) {
 
-			out.println("	<tr>");
-			out.println("		<td>" + dan + "</td>");
-			out.println("		<td>" + i + "</td>");
-			out.println("		<td>" + dan * i + "</td>");
-			out.println("	</tr>");
+			out.println("	<tr>"
+						+"		<td>" + dan + "</td>"
+						+"		<td>" + i + "</td>"
+						+"		<td>" + dan * i + "</td>"
+						+"	</tr>");
 		}
 		out.println("</table>");
 
